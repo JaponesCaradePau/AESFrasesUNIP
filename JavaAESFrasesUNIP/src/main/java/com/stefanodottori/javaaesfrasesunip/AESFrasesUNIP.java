@@ -19,13 +19,14 @@ public class AESFrasesUNIP {
 
     private static final String AES = "AES";
 
-    // We are using a Block cipher(CBC mode) 
+    
     private static final String AES_CIPHER_ALGORITHM = "AES/CBC/PKCS5PADDING";
 
     
 
-    // Function to create a 
-    // secret key 
+    /*
+    função para criar a chave AES
+    */
     public static SecretKey criaChaveAES()
             throws Exception {
         SecureRandom securerandom
@@ -52,10 +53,7 @@ public class AESFrasesUNIP {
         return initializationVector;
     }
 
-    // This function takes plaintext, 
-    // the key with an initialization 
-    // vector to convert textoPuro 
-    // into CipherText. 
+     
     public static byte[] encriptaAES(
             String textoPuro,
             SecretKey chaveSecreta,
@@ -77,11 +75,7 @@ public class AESFrasesUNIP {
                 textoPuro.getBytes());
     }
 
-    // This function performs the 
-    // reverse operation of the 
-    // encriptaAES function. 
-    // It converts ciphertext to 
-    // the plaintext using the key. 
+     
     public static String decriptaAES(
             byte[] textoCifrado,
             SecretKey chaveSecreta,
@@ -106,7 +100,7 @@ public class AESFrasesUNIP {
         return new String(resultado);
     }
 
-    // Driver code 
+    
     public static void main(String args[])
             throws Exception {
         SecretKey chaveSimetrica
@@ -121,8 +115,10 @@ public class AESFrasesUNIP {
         String textoPuro
                 = JOptionPane.showInputDialog(null, "Digite a frase que deseja encriptar");
 
-        // Encrypting the message 
-        // using the symmetric key 
+        /* Encripta a mensagem
+        utilizando a chave AES criada
+        */ 
+         
         byte[] textoCifrado
                 = encriptaAES(
                         textoPuro,
@@ -132,8 +128,9 @@ public class AESFrasesUNIP {
         JOptionPane.showMessageDialog(null, "O texto cifrado ou mensagem encriptada é: " + DatatypeConverter.printHexBinary(
                 textoCifrado));
 
-        // Decrypting the encrypted 
-        // message 
+        /*
+        decripta a mensagem 
+        */
         String decryptedText
                 = decriptaAES(
                         textoCifrado,
