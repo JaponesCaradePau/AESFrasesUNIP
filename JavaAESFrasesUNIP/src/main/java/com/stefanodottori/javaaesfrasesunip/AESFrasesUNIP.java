@@ -1,4 +1,6 @@
+
 package com.stefanodottori.javaaesfrasesunip;
+
 
 import java.security.SecureRandom;
 
@@ -11,7 +13,7 @@ import javax.xml.bind.DatatypeConverter;
 
 /**
  *
- * @author stefa
+ * @author Stefano Dottori - RA: T530IF4
  */
 public class AESFrasesUNIP {
 
@@ -38,11 +40,10 @@ public class AESFrasesUNIP {
         return key;
     }
 
-    /* Function to initialize a vector 
-    */ 
+    // função para iniciar o vetor de criptografia 
     public static byte[] criaVetorDeInicializacao() {
 
-        // Used with encryption 
+        // utilizando com encriptação
         byte[] initializationVector
                 = new byte[16];
         SecureRandom secureRandom
@@ -55,7 +56,7 @@ public class AESFrasesUNIP {
     // the key with an initialization 
     // vector to convert textoPuro 
     // into CipherText. 
-    public static byte[] do_AESEncryption(
+    public static byte[] encriptaAES(
             String textoPuro,
             SecretKey chaveSecreta,
             byte[] initializationVector)
@@ -78,7 +79,7 @@ public class AESFrasesUNIP {
 
     // This function performs the 
     // reverse operation of the 
-    // do_AESEncryption function. 
+    // encriptaAES function. 
     // It converts ciphertext to 
     // the plaintext using the key. 
     public static String decriptaAES(
@@ -123,7 +124,7 @@ public class AESFrasesUNIP {
         // Encrypting the message 
         // using the symmetric key 
         byte[] textoCifrado
-                = do_AESEncryption(
+                = encriptaAES(
                         textoPuro,
                         chaveSimetrica,
                         initializationVector);
@@ -143,3 +144,5 @@ public class AESFrasesUNIP {
 
     }
 }
+
+
